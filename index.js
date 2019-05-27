@@ -30,7 +30,6 @@ function getDogImage(n){
 }
 
 
-
 function getBreedImage(breed) {
   return fetch(`https://dog.ceo/api/breed/${breed}/images`)
   .then(response => {
@@ -49,27 +48,60 @@ function getBreedImage(breed) {
   })
 }
 
+
 function handleClick(){
-  $('#random-dog-img-form').submit(e => {
-    e.preventDefault();
+  $('#forms').submit( event => {
+    event.stopPropagation();
+    event.preventDefault();
+    console.log(event.target[0].id,'hi')
     const inputVar = $('#for-dog-image-entry').val();
-    console.log(typeof inputVar, inputVar)
-    if (/^\d+$/.test(inputVar)) {
+    const breedInput = $('#random-dog-breed').val();
+    if (event.target[0].id  === 'for-dog-image-entry') {
+      console.log(event.currentTarget ,'hi')
       getDogImage(inputVar)
       .then(response => {
         addDogsToState(response.message);
         render();
       });
-    }
-    else if (typeof inputVar === 'string') {
-      getBreedImage(inputVar)
+    } 
+    if (event.target[0].id === 'random-dog-breed') {
+      console.log(event.currentTarget ,'here')
+      getBreedImage(breedInput)
       .then(response => {
         addDogsToState(response.message);
         render();
       });
     }
-  });
-}   
+  })
+}
+
+
+
+
+
+// function handleClick(){
+//   $('#forms').submit(e => {
+//     e.preventDefault();
+//     const inputVar = $('#for-dog-image-entry').val();
+//     const breedInput = $('#random-dog-breed').val();
+//     console.log(breedInput)
+//     console.log(typeof inputVar, inputVar)
+//     if (/^\d+$/.test(inputVar)) {
+//       getDogImage(inputVar)
+//       .then(response => {
+//         addDogsToState(response.message);
+//         render();
+//       });
+//     }
+//     else if (typeof breedInput === 'string') {
+//       getBreedImage(breedInput)
+//       .then(response => {
+//         addDogsToState(response.message);
+//         render();
+//       });
+//     }
+//   });
+// }   
 
 $(() =>{
   handleClick();
