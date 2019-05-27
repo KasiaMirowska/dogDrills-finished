@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Random Dog Images</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>DOGS SEARCH</h1>
+    <div>
+        <form id='random-dog-img-form'>
+            <label class='for-dog-image-entry'>Number of random dog images:</label>
+            <input id = 'for-dog-image-entry'class='for-dog-image-entry' type='number' name='for-dog-image-entry' placeholder='e.g, 1,2,3' min = "1" max="50" value= "3">
+            <button type='submit'>SEARCH</button>
+        </form>
+        <form id='single-breed-dog-img-form'>
+            <label class='for-dog-image-entry'>Specific breed of dog images:</label>
+            <input name="Breed list" id='random-dog-breed' class='random-dog-breed' type="text" placeholder='e.g. germanshephard'>
+            <button type='submit'>SEARCH</button>
+        </form>
+    </div>
+    <div>
+        <ul>
+
+        </ul>
+    </div>
+<script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <script type='text/javascript' src='index.js'></script>   
+</body>
+</html>
